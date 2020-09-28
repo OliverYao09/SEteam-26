@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Webpixels">
+    <title></title>
+    <!-- this is google map API style-->
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 100%;
+          width: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+    <!-- Preloader -->
+    <style>
+        @keyframes hidePreloader {
+            0% {
+                width: 100%;
+                height: 100%;
+            }
+
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        body>div.preloader {
+            position: fixed;
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1071;
+            opacity: 0;
+            transition: opacity .5s ease;
+            overflow: hidden;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body:not(.loaded)>div.preloader {
+            opacity: 1;
+        }
+
+        body:not(.loaded) {
+            overflow: hidden;
+        }
+
+        body.loaded>div.preloader {
+            animation: hidePreloader .5s linear .5s forwards;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.querySelector('body').classList.add('loaded');
+            }, 300);
+        });
+    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png"><!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Quick CSS -->
+    <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css" id="stylesheet">
+    <link rel="stylesheet" href="assets/js/layui/css/layui.css" id="stylesheet">
+    <script src="assets/js/Main.js"></script>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="index.html">
+                <img alt="Image placeholder" src="assets/img/brand/taxi.svg" style ="height: 100px;"id="navbar-logo">
+            </a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html" style="font-size: 1.2rem;">Homepage</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="admin.html" style="font-size: 1.2rem;">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <section class="slice py-7">
+        <div class="container">
+            <div class="row row-grid align-items-center">
+                <div class="col-12 col-md-5 col-lg-6 order-md-2 text-center">
+                    <!-- Image -->
+                    <figure class="w-100">
+                        <img alt="Image placeholder" src="assets/img/svg/illustrations/illustration-9.svg" class="img-fluid mw-md-120">
+                    </figure>
+                </div>
+                <div class="col-12 col-md-7 col-lg-6 order-md-1 pr-md-5">
+                    <!-- Heading -->
+                    <h1 class="display-4 text-center text-md-left mb-3">
+                        It's time to travel by <strong class="text-primary">Booking a car at CabsOnline</strong>
+                    </h1>
+                    <!-- Text -->
+                    <p class="lead text-center text-md-left text-muted">
+                        This assignment aims to bulid a website for customer booking a car online.
+                    </p>
+                    <!-- Buttons -->
+                    <div class="text-center text-md-left mt-5">
+                        <a href="#getstart" class="btn btn-primary btn-icon">
+                            <span class="btn-inner--text">Start Booking</span>
+                            <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="container">
+            <!-- Section title -->
+            <div class="row mb-5 justify-content-center text-center">
+                <div class="col-lg-6">
+                    <div id="getstart">
+                    <span class="badge badge-soft-success badge-pill badge-lg">
+                        Get started
+                    </span>
+                    </div>
+                    <h2 class=" mt-4">Fill up the form below and start book a car.</h2>
+                </div>
+            </div>
+            <!-- Form for user booking a taxi -->
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body pb-5">
+                            <div class="pt-4 pb-5">
+                                <img src="assets/img/svg/illustrations/illustration-6.svg" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
+                            </div>
+                            <h4 style="text-align: center; color:mediumvioletred; font-size: large;">Enter information to get your car now</h4>
+                                <div class="wrap-contact100">
+                                    <form class="contact100-form validate-form" action="index.html" method="POST" class="ui form">
+                                        <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+                                            <span class="label-input100">Tell us your First Name *</span>
+                                            <input class="input100" type="text" name="firstname" placeholder="First name">
+                                        </div>
+
+                                        <div class="wrap-input100 rs1-wrap-input100 validate-input">
+                                            <span class="label-input100">Last Name *</span>
+                                            <input class="input100" type="text" name="lastname" placeholder="Last name" required>
+                                        </div>
+
+                                        <div class="wrap-input100 rs1-wrap-input100 validate-input">
+                                            <span class="label-input100">Phone Number *</span>
+                                            <input class="input100" type="text" name="phone" placeholder="Phone Number" required>
+                                        </div>
+                                        <div class="wrap-input100 rs1-wrap-input100">
+                                            <span class="label-input100">Pick-up Time *</span>
+                                            <input class="input100" type="datetime-local" name="pickuptime" placeholder="Pick-up Time"  required>
+                                        </div>
+
+                                        <div class="wrap-input100 ">
+                                            <span class="label-input100">Pick-up Address *</span>
+                                            <input class="input100" type="text" name="pickupaddress" placeholder="e.g.: 6-24 Saint Paul Street, Auckland CBD, Auckland" style="width:800px;" required>
+                                        </div>
+
+                                        <div class="wrap-input100 rs1-wrap-input100">
+                                            <span class="label-input100">Enter your Destination *</span>
+                                            <input class="input100" type="text" name="destination" placeholder="e.g.: 1/323 Parnell Road, Parnell, Auckland 1052" style="width:800px;" required>
+                                        </div>
+
+                                        <div class="container-contact100-form-btn">
+                                            <div class="wrap-contact100-form-btn">
+                                                <div class="contact100-form-bgbtn"></div>
+                                                <a href="javascript:void(0)" class="contact100-form-btn" onclick="submitOrder(event)" name="submit">Get Car</a>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="wrap-input100 success">
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slice slice-lg">
+        <div class="container">
+            <div class="py-6">
+                <div class="row row-grid justify-content-between align-items-center">
+                    <div class="col-lg-5">
+                        <h5 class="h3">Click the Picture on thr Right for <h2 style="color: #008aff;">Visiting Admin Page to Search Your Taxi Order</h2></h5>
+                        <p class="lead my-4">
+                            What you can do in Admin Page:
+                        </p>
+                        <ul class="list-unstyled mb-0">
+                            <li class="py-2">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <div class="icon icon-shape bg-primary text-white icon-sm rounded-circle mr-3">
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="h6 mb-0">Search Specific Order</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="py-2">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <div class="icon icon-shape bg-primary text-white icon-sm rounded-circle mr-3">
+                                            <i class="fas fa-store-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="h6 mb-0">Search All Orders</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="py-2">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <div class="icon icon-shape bg-primary text-white icon-sm rounded-circle mr-3">
+                                            <i class="fas fa-store-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="h6 mb-0">Assigning Taxi for Orders</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card mb-0 ml-lg-5">
+                            <div class="card-body p-2">
+                                <a href="admin.html">
+                                <img alt="Image placeholder" src="assets/img/theme/light/admin.jpg" class="img-fluid shadow rounded">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="position-relative" id="footer-main">
+        <div class="footer pt-lg-7 footer-dark bg-dark">
+            <!-- SVG shape -->
+            <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
+                <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class=" fill-section-secondary">
+                    <polygon points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+            <!-- Footer -->
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <!-- Theme's logo -->
+                        <a href="index.html">
+                            <img alt="Image placeholder" src="assets/img/brand/taxi2.png" id="footer-logo">
+                        </a>
+                        <!-- Webpixels' mission -->
+                        <p class="mt-4 text-sm opacity-8 pr-lg-4">The CabsOnline is builded for users to call taxi online. It's designed and implemented by company call "Quick" and it's modified by MengLong Yao to his own specific function</p>
+                        <!-- Social -->
+                        <ul class="nav mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="#" target="_blank">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class=" col-sm-4 ml-lg-auto">
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <hr class="divider divider-fade divider-dark my-4">
+                <div class="row align-items-center justify-content-md-between pb-4">
+                    <div class="col-md-6">
+                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                            Copyright &copy; 2020. All rights reserved Menglong Yao.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Quick JS -->
+    <script src="assets/js/jquery-1.12.1.min.js"></script>
+    <script src="assets/js/layui/layui.all.js"></script>
+    <!-- Feather Icons -->
+    <script>
+        $(function(){
+            var format = "";
+
+            //Construct the current date according to the datetime-local format
+            function getFormat(){
+                format = "";
+                var nTime = new Date();
+                format += nTime.getFullYear()+"-";
+                format += (nTime.getMonth()+1)<10?"0"+(nTime.getMonth()+1):(nTime.getMonth()+1);
+                format += "-";
+                format += nTime.getDate()<10?"0"+(nTime.getDate()):(nTime.getDate());
+                format += "T";
+                format += nTime.getHours()<10?"0"+(nTime.getHours()):(nTime.getHours());
+                format += ":";
+                format += nTime.getMinutes()<10?"0"+(nTime.getMinutes()):(nTime.getMinutes());
+                format += ":00";
+            }
+            getFormat();
+            $("input[name='pickuptime']").val(format);
+        });
+        function submitOrder(){
+            event.preventDefault();
+            let firstname       = $("input[name='firstname']").val();
+            let lastname        = $("input[name='lastname']").val();
+            let phone           = $("input[name='phone']").val();
+            let pickuptime      = $("input[name='pickuptime']").val();
+            let pickupaddress   = $("input[name='pickupaddress']").val();
+            let destination     = $("input[name='destination']").val();
+
+            /**************Verify submission data start***********/
+            if(lastname == ''){
+                layer.msg('Last Name Cannot be Null !');
+                $("input[name='lastname']").focus();
+                return false;
+            }
+            if(!isNaN(firstname)){
+                layer.msg('First Name Must be String !');
+                $("input[name='firstname']").focus();
+                return false;
+            }
+            if(!isNaN(lastname)){
+                layer.msg('Last Name Must be String !');
+                $("input[name='lastname']").focus();
+                return false;
+            }
+
+            if(phone == ''){
+                layer.msg('Phone Number Cannot be Null !');
+                $("input[name='phone']").focus();
+                return false;
+            }
+            let pa = /^\d{10,11}$/;
+            if(!pa.test(phone)){
+                layer.msg('Phone Numer Needs to be <h5 style="color:red">10-11 digits !</h5>');
+                $("input[name='phone']").focus();
+                return false;
+            }
+            if(pickuptime == ''){
+                layer.msg('Pick-up Time is in Wrong format !');
+                $("input[name='pickuptime']").focus();
+                return false;
+            }
+            if(pickupaddress == ''){
+                layer.msg('Pick-up Address Cannot be Null !');
+                $("input[name='pickupaddress']").focus();
+                return false;
+            }
+            if(destination == ''){
+                layer.msg('Enter your Destination Cannot be Null !');
+                $("input[name='destination']").focus();
+                return false;
+            }
+            let pat = /\d/;
+            if(!pat.test(pickupaddress)){
+                layer.msg('Pick-up Address must be start with unit number !');
+                $("input[name='pickupaddress']").focus();
+                return false;
+            }
+            if(!pat.test(destination)){
+                layer.msg('Destination must be start with unit number !');
+                $("input[name='destination']").focus();
+                return false;
+            }
+            /**************Verify submission data end***********/
+
+            let op = 'submit';
+            let customer_name = firstname + lastname;
+            let send = "op="+op+"&customer_name="+customer_name+"&phone="+phone+"&pickuptime="+pickuptime+"&pickupaddress="+pickupaddress+"&destination="+destination;
+            ajax(send);
+        }
+
+        //This method will use the XMLHTTPRequest object for AJAX asynchronous data interaction
+        var xmlhttp;
+        function ajax(send) {
+            //reate an XMLHttpRequest object
+            if (window.XMLHttpRequest) {
+                //compatible with FireFox，Mozillar，Opera，Safari，IE7，IE8
+                xmlhttp = new XMLHttpRequest();
+                //Corrected the bugs for some specific versions of browser
+                if (xmlhttp.overrideMimeType) {
+                    xmlhttp.overrideMimeType("text/xml");
+                }
+            } else if (window.ActiveXObject) {
+                //Create the control name of the XMLHTTPRequest object and save it in a js array
+                var activexName = ["MSXML2.XMLHTTP","Microsoft.XMLHTTP"];
+                for (var i = 0; i < activexName.length; i++) {
+                    try{
+                        //the loop will terminated if the creation is successful
+                        //if not, keep looping
+                        xmlhttp = new ActiveXObject(activexName[i]);
+                        break;
+                    } catch(e){
+                    }
+                }
+            }
+            //Confirm that the XMLHTtpRequest object is created successfully
+            if (!xmlhttp) {
+                alert("XMLHttpRequest Object creation failed!");
+                return;
+            }
+
+            //callback function
+            xmlhttp.onreadystatechange = callback;
+
+            //connection information
+            xmlhttp.open("POST","server.php",true);
+            xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+            //Send data to server
+            xmlhttp.send(send);
+        }
+
+        //callback function
+        function callback() {
+
+            //Judging the state of the object is interactive completion
+            if (xmlhttp.readyState == 4) {
+
+                //Determine whether the http interaction is successful
+                if (xmlhttp.status == 200){
+
+                    //Obtain the plain text data output by the server segment
+                    let response = xmlhttp.response;
+                    let res = eval('(' + response + ')');
+                    if(res.errcode == 0){
+                        showSuccess(res.data);
+                        // layer.msg(res.msg);
+                    }else{
+                        layer.msg(res.msg);
+                    }
+
+                } else {
+                    alert("The system is broken, please try again !");
+                }
+            }
+        }
+
+        function showSuccess(data)
+        {
+            let html = "<span class='order-tips'>Thank you! Your booking reference number " +
+                "is <b><"+data.number+"></b>. You will be picked up in front of " +
+                "your provided address at <b><"+data.pickupdate+"></b> on <b><"+data.pickuptime+"></b></span>";
+            $(".success").html(html);
+            $(".success").show();
+        }
+    </script>
+    <script>
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var map, infoWindow;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 6
+          });
+          infoWindow = new google.maps.InfoWindow;
+  
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+  
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('Location found.');
+              infoWindow.open(map);
+              map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+          }
+        }
+  
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.open(map);
+        }
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeJRYFIun1e2pOOyW9SI7rjHTiSAJgejc&callback=initMap">
+      </script>
+</body>
+
+</html>
