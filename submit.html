@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Submit new book</h1>
+
+
+<form action="/book/addBook" method="post">
+    <input type = "text" required name = "title" vlaue = "50" size = "100" placeholder="Please write the title of the book">
+    <br/>
+    <input type = "text" required name = "author" vlaue = "50" size = "20" placeholder="Pleast write the Author">
+    <br/>
+    <!--<input type = "text" required name = "year" vlaue = "50" size = "20" placeholder="Pleast write the year">
+    <br/>-->
+    <input type = "text" required name = "doi" vlaue = "50" size = "50" placeholder="Pleast write the Doi">
+    <br/>
+    <input type = "text" required name = "result" vlaue = "50" size = "100" placeholder="Note of the book">
+    <br/>
+
+    <input type="datetime-local" required max="9999-06-14T00:00" name="createtime">
+    <br/>
+
+    <select name = "catalog" >
+        <option value="">-select field-</option>
+        <option value="Science fiction">Science fiction</option>
+        <option value="Education">Education</option>
+        <option value="History">History</option>
+    </select>
+
+    <select name = "year">
+        <option value="">-operator-</option>
+        <option value="2000">2000</option>
+        <option value="1999">1999</option>
+        <option value="1998">1998</option>
+        <option value="1997">1997</option>
+    </select>
+
+
+    <select name = "price">
+        <option value="">-value-</option>
+        <option value="0-100">0-100</option>
+        <option value="100-200">100-200</option>
+        <option value="200-300">200-300</option>
+    </select>
+
+    <input type = "reset" value = "reset"/>
+    <br/>
+    <input type = "submit" value = "submit"/>
+</form>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+</html>
