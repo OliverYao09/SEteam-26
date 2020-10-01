@@ -12,7 +12,7 @@
         <result property="createtime" column="createTime" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!--查询单个-->
+    <!--Search single book-->
     <select id="queryById" resultMap="BookMap">
         select
           *
@@ -20,7 +20,7 @@
         where id = #{id}
     </select>
 
-    <!--查询指定行数据-->
+    <!--Query specified row data-->
     <select id="queryAllByLimit" resultMap="BookMap">
         select
           *
@@ -28,7 +28,7 @@
         limit #{offset}, #{limit}
     </select>
 
-    <!--通过实体作为筛选条件查询-->
+    <!--Query by entity as a filter-->
     <select id="queryAll" resultMap="BookMap">
         select *
         from book.book
@@ -57,13 +57,13 @@
         </where>
     </select>
 
-    <!--新增所有列-->
+    <!--Add all rows-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into book.book(title, author, year, doi, result, createTime,catalog,price)
         values (#{title}, #{author}, #{year}, #{doi}, #{result}, #{createtime},#{catalog},#{price})
     </insert>
 
-    <!--通过主键修改数据-->
+    <!--Modify data by primary key-->
     <update id="update">
         update book.book
         <set>
@@ -89,7 +89,7 @@
         where id = #{id}
     </update>
 
-    <!--通过主键删除-->
+    <!--Delete by primary key-->
     <delete id="deleteById">
         delete from book.book where id = #{id}
     </delete>

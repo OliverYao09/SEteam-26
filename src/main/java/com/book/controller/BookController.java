@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * (Book)表控制层
+ * (Book)table control layer
  *
  * @author makejava
  * @since 2020-09-26 10:04:33
@@ -20,16 +20,16 @@ import java.util.Map;
 @RequestMapping("book")
 public class BookController {
     /**
-     * 服务对象
+     * Service object
      */
     @Resource
     private BookService bookService;
 
     /**
-     * 通过主键查询单条数据
+     * Query single data by primary key
      *
-     * @param id 主键
-     * @return 单条数据
+     * @param id Primary Key
+     * @return Single data
      */
     @GetMapping("selectOne")
     public Book selectOne(Integer id) {
@@ -37,7 +37,7 @@ public class BookController {
     }
 
     /**
-     * 新增书书籍
+     * Add new books method
      * @param book
      * @return
      */
@@ -48,7 +48,7 @@ public class BookController {
     }
 
     /**
-     * 删除书籍
+     * Delete books method
      * @param id
      * @return
      */
@@ -60,7 +60,8 @@ public class BookController {
     }
 
     /**
-     * 根据 title author year or doi查询
+     * Query according to title author year or DOI
+
      * @return
      */
     @GetMapping("findByCondition")
@@ -71,7 +72,7 @@ public class BookController {
     }
 
     /**
-     * 多条件查询
+     * Multi-condition query
      * @param map
      * @return
      */
