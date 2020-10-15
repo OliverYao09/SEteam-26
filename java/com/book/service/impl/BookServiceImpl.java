@@ -24,7 +24,7 @@ public class BookServiceImpl implements BookService {
     /**
      * query single record via ID
      *
-     * @param id PK
+     * @param id Primary Key
      * @return Instance object
      */
     @Override
@@ -69,9 +69,9 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * delete data via PK
+     * delete data via Primary Key
      *
-     * @param id PK
+     * @param id Primary Key
      * @return SuccessFlag
      */
     @Override
