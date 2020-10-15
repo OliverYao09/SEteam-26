@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        .login-out {
+            margin: 150px auto;
+            width: 600px;
+            height: 450px;
+            border: 1px #ddd solid;
+            text-align: center;
+        }
+
+        .login-out form {
+            margin-top: 10%;
+        }
+        .inp_{
+            height: 27px;
+            width: 220px;
+            border-radius: 3px;
+            border: 1px gray solid;
+        }
+        .btn_comm,.btn_regist{
+            width: 80px;
+            height: 30px;
+            background-color: #409EFF;
+            border-radius: 3px;
+            border: 1px gray solid;
+            color: white;
+            font-size: 14px;
+        }
+        .btn_regist{
+            background-color: #67C23A;
+            display: inline-block;
+            line-height: 28px;
+            width: 78px;
+            height: 28px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-out">
+    <!--<h1 style="position: relative;top:20px;left:60px;color: #5E73CC"><span>登录</span></h1>-->
+    <form action="/userLogin" id="login-form" method="post">
+        <h2>登录</h2>
+        <p style="color: red" th:text="${msg}"></p>
+        <p><span style="display:inline-block;width: 60px;text-align: right;">用户名：
+        </span><input name="username" v-model="username" type="text" class="inp_" placeholder="请输入用户名" required>
+        </p>
+        <p><span style="display:inline-block;width: 60px;text-align: right;">密码：</span>
+            <input class="inp_" v-model="password" name="password" style="margin-left: -10px" type="password" placeholder="请输入密码" required>
+        </p>
+        </p>
+        <!--<p><span style="display:inline-block;width: 60px;text-align: right;">角色：</span>
+            <select class="inp_sel" v-model="role" name="role" id="" style="margin-left: -10px">
+                <option value="代驾" selected="selected">代驾</option>
+                <option value="租车车主">租车车主</option>
+                <option value="二手车车主">二手车车主</option>
+                <option value="普通用户">普通用户</option>
+                <option value="管理员">管理员</option>
+            </select>
+        </p>-->
+        <p style="margin: 40px 0 0 30px">
+            <input type="submit" class="btn_comm" value="登录">
+            <a style="margin-left: 10px" href="regist.html" class="btn_regist">注册</a>
+        </p>
+    </form>
+</div>
+</body>
+</html>
