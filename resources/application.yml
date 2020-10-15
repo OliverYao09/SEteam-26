@@ -6,11 +6,12 @@ spring:
   #\u5B9A\u4E49\u6570\u636E\u6E90
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/book?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    #url: jdbc:mysql://127.0.0.1:3306/book?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://rm-2zeedrx4ao895w03jko.mysql.rds.aliyuncs.com:3306/gd_subdb_1ehb1rp?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT
     #    username: SeaChen
     #    password: 3389
-    username: root
-    password: root
+    username: kaifa
+    password: Goodo123
   thymeleaf:
     cache: false
     check-template-location: true
